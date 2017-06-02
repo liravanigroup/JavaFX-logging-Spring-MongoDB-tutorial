@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<Tab text="Поиск документов" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.idrawings.desktop.controllers.DocumentSearchController">
+   <content>
+      <AnchorPane>
+         <children>
+            <BorderPane prefHeight="0.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <HBox spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox layoutX="10.0" layoutY="10.0">
+                           <children>
+                              <Label text="Разработал" />
+                              <TextField fx:id="author" />
+                              <Label text="Проверил" />
+                              <TextField fx:id="checked" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0">
+                           <children>
+                              <Label text="Шифр содержит:" />
+                              <TextField fx:id="code" />
+                              <Label text="Название чертежа содержит:" />
+                              <TextField fx:id="name" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Материал содержит:" />
+                              <TextField fx:id="material" prefHeight="25.0" prefWidth="185.0" />
+                              <Label text="Организация содержит:" />
+                              <TextField fx:id="organization" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Масса содержит:" />
+                              <TextField fx:id="weight" />
+                              <Label text="Чертеж содержит текст:" />
+                              <TextField fx:id="text" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <children>
+                              <Label text="Чертеж содержит размер:" />
+                              <TextField fx:id="size" />
+                              <Label text="Содержит в одной из таблиц:" />
+                              <TextField fx:id="table" />
+                           </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <VBox>
+                           <children>
+                              <Label />
+                              <Button mnemonicParsing="false" text="Фильтровать" />
+                              <Label />
+                              <Button mnemonicParsing="false" onAction="#reset" text="Сбросить фильтр" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label />
+                              <Button fx:id="index" mnemonicParsing="false" />
+                              <Label />
+                           </children>
+                        </VBox>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </BorderPane.margin>
+                  </HBox>
+               </top>
+               <bottom>
+                  <VBox BorderPane.alignment="CENTER">
+                     <children>
+                        <ToolBar>
+                           <items>
+                              <Button fx:id="checkAll" mnemonicParsing="false" text="Выделить все">
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../icons/checkbox.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button fx:id="uncheckedAll" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Снять выделение">
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../icons/uncheck.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="cleanTable" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Очистить таблицу">
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../icons/clean.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </items>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" />
+                           </padding>
+                        </ToolBar>
+                     </children>
+                  </VBox>
+               </bottom>
+               <center>
+                  <VBox BorderPane.alignment="CENTER">
+                     <children>
+                        <TitledPane alignment="CENTER" animated="false" collapsible="false" expanded="false" focusTraversable="false" snapToPixel="false" text="Прочитанные чертежи" textAlignment="CENTER" VBox.vgrow="NEVER" />
+                        <ListView fx:id="drawingsList" editable="true" focusTraversable="false" VBox.vgrow="ALWAYS" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </center>
+               <right>
+                  <VBox BorderPane.alignment="CENTER">
+                     <children>
+                        <TitledPane alignment="CENTER" animated="false" collapsible="false" expanded="false" focusTraversable="false" snapToPixel="false" text="Предпросмотр выбранного чертежа" textAlignment="CENTER" VBox.vgrow="NEVER" />
+                        <ScrollPane prefHeight="300.0" prefWidth="200.0">
+                           <content>
+                              <ImageView focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/1364283943_0243-01.gif" />
+                                 </image>
+                              </ImageView>
+                           </content>
+                        </ScrollPane>
+                        <TableView fx:id="drawingInfoTable" focusTraversable="false" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn prefWidth="75.0" text="Свойства выделенного чертежа">
+                                 <columns>
+                                    <TableColumn fx:id="key" editable="false" minWidth="130.0" prefWidth="-1.0" resizable="false" sortable="false" text="Свойство" />
+                                    <TableColumn fx:id="value" minWidth="200.0" prefWidth="-1.0" resizable="false" sortable="false" text="Значение" />
+                                 </columns>
+                              </TableColumn>
+                           </columns>
+                        </TableView>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets right="10.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </right>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </content>
+</Tab>
